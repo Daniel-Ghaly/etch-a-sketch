@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Etch-A-Sketch</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+
+    <div class=button-container>
+        <button>Clear Grid</button>
+    </div>
+
+
+    <div id=grid-container>
+        <div id=grid>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+
+        // create 4x4 sketch grid
+
+        const grid = document.body.querySelector("#grid")
+
+
+
+        for (a = 0; a < 4; a++) {
+            const row = document.createElement("div")
+
+            grid.appendChild(row)
+            row.classList.add("row")
+
+            for (b = 0; b < 4; b++) {
+                const square = document.createElement("div")
+
+                row.appendChild(square);
+                square.classList.add("square")
+
+            }
+
+        }
+
+
+        // make 4x4 squares turn black upon hover
+
+
+        const squares = document.querySelectorAll(".square")
+
+        for (s = 0; s < 16; s++) {
+
+            squares[s].addEventListener("mouseover", function (event) {
+
+                event.target.style.backgroundColor = "black"
+
+            });
+
+        }
+
+
+        // clear 4x4 grid when clicking button
+
+        const clearGrid = document.body.querySelector("button")
+
+        clearGrid.addEventListener("click", function () {
+
+           grid.innerHTML = ''
+
+                // ask for desired size of new grid
+
+        let i = prompt("What size grid would you like?")
+        let j = i
+
+        for (a = 0; a < i; a++) {
+            const row = document.createElement("div")
+
+            grid.appendChild(row)
+            row.classList.add("row")
+
+            for (b = 0; b < j; b++) {
+                const square = document.createElement("div")
+
+                row.appendChild(square);
+                row.style.height = 500/i + "px"
+                square.classList.add("square")
+                square.style.width = 500/i + "px"
+
+            }
+
+        }
+
+
+        // make new squares turn black upon hover
+
+        const new_squares = document.querySelectorAll(".square")
+
+
+        for (s = 0; s < i * j; s++) {
+
+
+            new_squares[s].addEventListener("mouseover", function (event) {
+
+                event.target.style.backgroundColor = "black"
+
+            });
+
+        }
+
+
+        // clear new grid when clicking button
+
+
+        clearGrid.addEventListener("click", function () {
+
+            for (s = 0; s < i * j; s++) {
+
+                new_squares[s].style.backgroundColor = "white"
+
+            }
+        });
+
+        // console.log(i)
+
+// call sketch() to redraw grid according to new size
+
+
+
+            
+        });
+
+
+        
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+
+
+</html>
